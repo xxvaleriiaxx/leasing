@@ -1,0 +1,558 @@
+:root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #2C3E50;
+    --accent: #0077B6;
+    --accent-light: #0096d6;
+    --accent-dark: #005f8c;
+    --secondary-emerald: #00A896;
+    --secondary-emerald-light: #02c4ae;
+    --text-dark: #1e2a36;
+    --text-light: #f8f9fa;
+    --border-light: #e9ecef;
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+    --transition: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-dark);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Header */
+header {
+    background-color: var(--bg-secondary);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.8rem 0;
+}
+
+.logo a {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: var(--accent);
+    font-size: 1.8rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0.2rem;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+nav a:hover, nav a.active {
+    border-bottom-color: var(--accent);
+    color: var(--accent-light);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* Loader */
+.loader-container {
+    text-align: center;
+    padding: 3rem;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--border-light);
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Typography */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--bg-secondary);
+    font-weight: 700;
+}
+h2 {
+    font-size: 1.6rem;
+    margin: 1.5rem 0 1rem;
+    color: var(--bg-secondary);
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+}
+h3 {
+    font-size: 1.3rem;
+    margin: 0.8rem 0;
+}
+
+/* Buttons */
+button, .btn, .btn-small, .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+button:hover, .btn:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+}
+.btn-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    background-color: var(--secondary-emerald);
+}
+.btn-small:hover {
+    background-color: var(--secondary-emerald-light);
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Forms */
+input, select, textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    font-family: inherit;
+    transition: var(--transition);
+    background: white;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,119,182,0.2);
+}
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.product-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-light);
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #f0f4f8;
+}
+.product-card h3 {
+    padding: 1rem 1rem 0;
+    font-size: 1.25rem;
+}
+.product-card p {
+    padding: 0 1rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+.price {
+    font-weight: 700;
+    color: var(--bg-secondary);
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem 0;
+}
+.monthly {
+    color: var(--secondary-emerald);
+    font-weight: 600;
+    padding: 0 1rem 1rem;
+}
+.card-buttons {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+    flex-wrap: wrap;
+}
+.card-buttons .btn, .card-buttons .btn-small {
+    flex: 1;
+    justify-content: center;
+}
+
+/* Таблицы */
+.table-responsive {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+}
+th {
+    background-color: var(--bg-secondary);
+    color: white;
+    font-weight: 600;
+}
+tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Сообщения */
+.error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
+    margin: 1rem 0;
+}
+.success {
+    background: #e0f2fe;
+    color: #0c4e6e;
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
+    margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-light);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+.footer-grid h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--accent-light);
+}
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+.social-icons a:hover {
+    color: var(--accent);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    nav {
+        display: none;
+        width: 100%;
+    }
+    nav.show {
+        display: block;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0.5rem;
+    }
+    .header-flex {
+        flex-wrap: wrap;
+    }
+    h1 { font-size: 1.8rem; }
+    .product-grid { gap: 1rem; }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.page-transition {
+    animation: fadeIn 0.3s ease;
+}
+/* Таблицы в личном кабинете и админке */
+.table-responsive {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.profile-table, .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.profile-table th, .profile-table td,
+.admin-table th, .admin-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+}
+.profile-table th, .admin-table th {
+    background-color: var(--bg-secondary);
+    color: white;
+    font-weight: 600;
+}
+.profile-table tr:hover, .admin-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Статусы договоров */
+.status-new { background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 20px; display: inline-block; }
+.status-approved { background: #fff3e0; color: #e65100; padding: 4px 8px; border-radius: 20px; }
+.status-active { background: #e8f5e9; color: #1b5e20; padding: 4px 8px; border-radius: 20px; }
+.status-returned { background: #fbe9e7; color: #bf360c; padding: 4px 8px; border-radius: 20px; }
+.status-bought_out { background: #e0f2f1; color: #004d40; padding: 4px 8px; border-radius: 20px; }
+.status-expired { background: #ffebee; color: #b71c1c; padding: 4px 8px; border-radius: 20px; }
+/* Калькулятор */
+.calculator {
+    background: #f8f9fa;
+    padding: 1.2rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+}
+.calculator input[type="range"] {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+/* уведомления */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.toast {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 20px;
+    min-width: 250px;
+    max-width: 350px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+    border-left: 4px solid;
+}
+.toast.success { border-left-color: #00A896; }
+.toast.error { border-left-color: #dc3545; }
+.toast.info { border-left-color: #0077B6; }
+.toast .toast-message { flex: 1; font-size: 0.9rem; }
+.toast .toast-close { cursor: pointer; font-size: 1.2rem; color: #999; }
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Таблички адаптив */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+}
+
+/* Таблички в карточки */
+@media (max-width: 768px) {
+    .profile-table, .admin-table {
+        display: block;
+        width: 100%;
+    }
+    .profile-table thead, .admin-table thead {
+        display: none;
+    }
+    .profile-table tbody, .admin-table tbody {
+        display: block;
+    }
+    .profile-table tr, .admin-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
+        background: white;
+        padding: 0.5rem;
+        box-shadow: var(--shadow-sm);
+    }
+    .profile-table td, .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--border-light);
+        text-align: right;
+    }
+    .profile-table td:last-child, .admin-table td:last-child {
+        border-bottom: none;
+    }
+    .profile-table td::before, .admin-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+        flex: 1;
+        color: var(--bg-secondary);
+    }
+    /* select и input */
+    .profile-table td select, .admin-table td select,
+    .profile-table td input, .admin-table td input {
+        width: auto;
+        max-width: 140px;
+        margin: 0;
+    }
+    /* Кнопки в табличках */
+    .profile-table td .btn-small, .admin-table td .btn-small {
+        margin-left: auto;
+    }
+}
+
+/* Карточки товаров на мобилках */
+@media (max-width: 576px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .product-card {
+        display: flex;
+        flex-direction: column;
+    }
+    .card-buttons {
+        flex-wrap: wrap;
+    }
+    .card-buttons .btn, .card-buttons .btn-small {
+        flex: 1;
+        justify-content: center;
+    }
+    /* Шапка и навигация */
+    .header-flex {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .logo a {
+        font-size: 1.4rem;
+    }
+    nav ul {
+        justify-content: center;
+    }
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    /* Модальные окна */
+    #product-modal > div, #payment-modal > div, #payments-modal > div,
+    #custom-number-modal > div {
+        width: 95%;
+        padding: 1rem;
+    }
+    /* Калькулятор */
+    .calculator input[type="range"] {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    .container {
+        width: 95%;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ПрофиЛизинг – технологичный лизинг оборудования</title>
+    <meta name="description" content="Лизинг строительной и промышленной техники с выкупом, продлением или возвратом. Каталог, онлайн-заявка, личный кабинет.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <a href="#/"><i class="fas fa-chart-line"></i> ПрофиЛизинг</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#/"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#/about"><i class="fas fa-info-circle"></i> О нас</a></li>
+                    <li><a href="#/catalog"><i class="fas fa-tools"></i> Каталог</a></li>
+                    <li><a href="#/contacts"><i class="fas fa-envelope"></i> Контакты</a></li>
+                    <li><a href="#/delivery"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="#/favorites"><i class="fas fa-heart"></i> Избранное</a></li>
+                    <li><a href="#/cart"><i class="fas fa-shopping-cart"></i> Корзина</a></li>
+                    <li id="auth-nav"></li>
+                    <li id="admin-nav" style="display:none;"><a href="#/admin"><i class="fas fa-user-shield"></i> Админка</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" id="app">
+            <div class="loader-container"><div class="loader"></div><p>Загрузка...</p></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <h4>ПрофиЛизинг</h4>
+                <p>© 2025 Все права защищены<br>Лизинг оборудования с гибкими условиями</p>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-67<br>
+                <i class="fas fa-envelope"></i> info@profleasing.ru<br>
+                <i class="fas fa-map-marker-alt"></i> Москва, ул. Лизинговая, 10</p>
+            </div>
+            <div>
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 9:00–19:00<br>Сб: 10:00–16:00<br>Вс: выходной</p>
+            </div>
+            <div>
+                <h4>Мы в соцсетях</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
