@@ -1,5 +1,6 @@
 # leasing
 Лизинг оборудования. Сайт без бд не запустится. Работу сайта в действии можно глянуть по ссылке http://r926402k.beget.tech/sites/leasing/index.html#/. Либо же выполнить подключение у себя с бд. В config.php нужно поменять данные для подключения. БД для теста (данные админа на сайте будут admin@leasing.ru и admin123):
+
 CREATE TABLE IF NOT EXISTS leasing_users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -10,7 +11,6 @@ CREATE TABLE IF NOT EXISTS leasing_users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 3. Таблица товаров (оборудования)
 CREATE TABLE IF NOT EXISTS leasing_products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS leasing_products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 4. Таблица избранного
 CREATE TABLE IF NOT EXISTS leasing_favorites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -37,7 +36,6 @@ CREATE TABLE IF NOT EXISTS leasing_favorites (
     FOREIGN KEY (product_id) REFERENCES leasing_products(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 5. Таблица корзины (с выбранным сроком)
 CREATE TABLE IF NOT EXISTS leasing_cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -49,7 +47,6 @@ CREATE TABLE IF NOT EXISTS leasing_cart (
     FOREIGN KEY (product_id) REFERENCES leasing_products(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 6. Таблица договоров (заказов)
 CREATE TABLE IF NOT EXISTS leasing_orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -67,7 +64,6 @@ CREATE TABLE IF NOT EXISTS leasing_orders (
     FOREIGN KEY (product_id) REFERENCES leasing_products(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 7. Таблица запросов клиентов (продление, возврат, выкуп)
 CREATE TABLE IF NOT EXISTS leasing_lease_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -78,7 +74,6 @@ CREATE TABLE IF NOT EXISTS leasing_lease_requests (
     FOREIGN KEY (order_id) REFERENCES leasing_orders(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 8. Таблица платежей (история)
 CREATE TABLE IF NOT EXISTS leasing_payments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -87,12 +82,10 @@ CREATE TABLE IF NOT EXISTS leasing_payments (
     FOREIGN KEY (order_id) REFERENCES leasing_orders(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 9. Добавление администратора (email: admin@leasing.ru, пароль: admin123)
 INSERT INTO leasing_users (email, password, name, role) VALUES
 ('admin@leasing.ru', '$2y$10$Frzy1JE0MC.OBLTsf.pxw.tRL8k7ly/8V59uIoIZERoOqJGKePP4G', 'Администратор', 'admin')
 ON DUPLICATE KEY UPDATE id=id;
 
--- 10. Тестовые товары (с авансом 20%, остатком 10%)
 INSERT INTO leasing_products (name, description, price, monthly_payment, lease_term_min, lease_term_max, advance_percent, residual_percent, image, status) VALUES
 ('Экскаватор Hitachi ZX200', 'Мощный гусеничный экскаватор для строительных работ. Глубина копания до 6 м.', 3500000.00, 70000.00, 12, 60, 20, 10, 'excavator.jpg', 1),
 ('Буровая установка Atlas Copco', 'Высокопроизводительная буровая установка для скальных пород.', 5200000.00, 104000.00, 24, 72, 20, 10, 'drill.jpg', 1),
