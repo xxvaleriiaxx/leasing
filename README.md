@@ -25,7 +25,7 @@
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+), SPA на нативном JS (хэш-роутинг).
 - **Backend**: PHP (без фреймворков), MySQL 5.7+.
-- **Сервер**: Apache с поддержкой .htaccess (опционально).
+- **Сервер**: Apache.
 - **Стили**: адаптивная вёрстка, CSS Grid, Flexbox, медиа-запросы.
 - **Коммуникация**: REST-like API (JSON), fetch с credentials.
 
@@ -170,8 +170,6 @@
 
     /sites/leasing/
     ├── index.html               # Главный HTML-скелет SPA
-    ├── .htaccess               # (опционально) правила перезаписи
-    ├── install.php             # (одноразовый) установщик БД
     ├── css/
     │   └── style.css           # Все стили (адаптивные)
     ├── js/
@@ -190,8 +188,6 @@
     ├── uploads/                # Загруженные изображения товаров
     │   ├── placeholder.jpg
     │   └── (другие картинки)
-    └── sql/
-        └── install.sql         # SQL-скрипт для создания БД
 
 Основные API-эндпоинты (примеры):
 
